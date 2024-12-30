@@ -25,6 +25,9 @@ const PopulerMenu = () => {
                     menu.map(item => <MenuItem key={item._id} item={item}></MenuItem>)
                 }
             </div>
+            <button className="btn btn-outline text-black hover:text-white hover:bg-black rounded-none border-0 border-b">
+                VIEW ALL MENU
+            </button>
         </section>
     );
 };
