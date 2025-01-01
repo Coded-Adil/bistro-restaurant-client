@@ -10,11 +10,10 @@ const Cover = ({ img, title }) => {
         >
             Blur transition from min to max
             <div
-                className="hero h-[700px]"
+                className="h-[600px]"
                 >
-                <div className="hero-overlay bg-opacity-60"></div>
-                <div className="hero-content text-neutral-content text-center">
-                    <div className="max-w-md">
+                <div className="text-neutral-content">
+                    <div className="max-w-lg flex items-center bg-black bg-opacity-60 flex-col justify-center px-10 py-6 mx-auto my-32 text-center">
                         <h1 className="mb-5 text-5xl font-bold uppercase">{title}</h1>
                         <p className="mb-5">
                             Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
