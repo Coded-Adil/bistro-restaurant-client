@@ -11,9 +11,9 @@ const MenuCategory = ({ items, title, coverImg }) => {
                     items.map(item => <MenuItem key={item._id} item={item}></MenuItem>)
                 }
             </div>
-            <Link to={`/order/${title}`}>
-                <button className="btn btn-outline text-white border-white hover:bg-white hover:text-black rounded-none border-0 border-b">
-                    Order Now
+            <Link to={`/order/${title}`} className="w-full flex justify-center my-4">
+                <button className="btn btn-outline text-black hover:text-white hover:bg-black rounded-none border-0 border-b">
+                    VIEW ALL MENU
                 </button>
             </Link>
         </div>
