@@ -1,14 +1,15 @@
 import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
+import { FaShoppingCart } from "react-icons/fa";
 
 const Navbar = () => {
-    const {user, logOut} = useContext(AuthContext);
-    
+    const { user, logOut } = useContext(AuthContext);
+
     const handleLogOut = () => {
         logOut()
-        .then(() => {})
-        .catch(error => console.log(error.message))
+            .then(() => { })
+            .catch(error => console.log(error.message))
     }
 
     const links =
@@ -17,15 +18,21 @@ const Navbar = () => {
             <li><NavLink to='/menu'>Our Menu</NavLink></li>
             <li><NavLink to='/order/salad'>Order Food</NavLink></li>
             <li><NavLink to='/secret'>Secret</NavLink></li>
+            <li><Link to={'/'}>
+                <button className="btn">
+                    <FaShoppingCart className="mr-2" />
+                    <div className="badge badge-secondary">+0</div>
+                </button>
+            </Link></li>
             {
-                user ? 
-                <>
-                    <span>{user?.displayName}</span>
-                    <button onClick={handleLogOut} className="btn btn-outline">Logout</button>
-                </> : 
-                <>
-                    <li><NavLink to='/login'>Login</NavLink></li>
-                </>
+                user ?
+                    <>
+                        {/* <span>{user?.displayName}</span> */}
+                        <button onClick={handleLogOut} className="btn btn-outline">Logout</button>
+                    </> :
+                    <>
+                        <li><NavLink to='/login'>Login</NavLink></li>
+                    </>
             }
         </>
     return (
@@ -50,14 +57,14 @@ const Navbar = () => {
                         <ul
                             tabIndex={0}
                             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-                            { links }
+                            {links}
                         </ul>
                     </div>
                     <Link to={'/'} className="btn btn-ghost text-xl">Bistro Boss</Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
-                        { links }
+                        {links}
                     </ul>
                 </div>
                 <div className="navbar-end">
