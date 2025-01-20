@@ -3,8 +3,10 @@ import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../providers/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const SignUp = () => {
+    const axiosPublic = useAxiosPublic();
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const { createUser, updateUserProfile } = useContext(AuthContext)
     const navigate = useNavigate();
@@ -17,9 +19,18 @@ const SignUp = () => {
                 console.log(loggedUser)
                 updateUserProfile(data.name, data.photoURL)
                     .then(() => {
-                        console.log("Profile Updated");
-                        reset();
-                        navigate('/');
+                        const userInfo = {
+                            name: data.name,
+                            email: data.email
+                        };
+                        axiosPublic.post('/users', userInfo)
+                            .then(res => {
+                                if (res.data.insertedId) {
+                                    console.log("Profile Updated");
+                                    reset();
+                                    navigate('/');
+                                }
+                            })
                     })
                     .catch(error => {
                         console.log(error)
