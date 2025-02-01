@@ -21,6 +21,7 @@ const FoodCard = ({ item }) => {
                 image,
                 price
             }
+            
             // axios.post("http://localhost:5000/carts", cartItem)
             axiosSecure.post("/carts", cartItem)
                 .then(res => {
